@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Easa's Full Bio</title>
+    <!-- Open Graph meta tags for link previews -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gamingwitheasa.github.io/QuoteOfTheWeek/" />
+    <meta property="og:title" content="Easa's Full Bio" />
+    <meta property="og:description" content="Discover the Easa's Full Bio" />
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Quote+of+the+Week" />
+    <meta property="og:site_name" content="Easa's Full Bio" />
+    <!-- Twitter Card meta tags -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Easa's Full Bio" />
+    <meta property="twitter:description" content="Discover the Easa's Full Bio" />
+    <meta property="twitter:image" content="https://via.placeholder.com/1200x630?text=Quote+of+the+Week" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            /* Updated background to animated gradient */
+            background: #000000;
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* Added background animation keyframes */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            background: linear-gradient(90deg, #8b0000, #ff1a1a);
+            padding: 20px;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: white;
+            /* Added header entrance animation */
+            animation: slideDown 1s ease-out;
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Added shimmer effect to header */
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .pfp-box {
+            margin: 40px auto;
+            background: rgba(17, 17, 17, 0.9);
+            border-left: 6px solid #ff1a1a;
+            border-right: 6px solid #8b0000;
+            padding: 25px;
+            width: 25%;
+            /* line-height: 1.8rem; */
+            box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            /* Added entrance animation for profile picture */
+            animation: fadeInScale 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            backdrop-filter: blur(5px);
+        }
+
+        .bio-box {
+            margin: 40px auto;
+            background: rgba(17, 17, 17, 0.9);
+            border-left: 6px solid #ff1a1a;
+            border-right: 6px solid #8b0000;
+            padding: 25px;
+            width: 70%;
+            font-size: 1.2rem;
+            line-height: 1.8rem;
+            box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            /* Added entrance animation for bio */
+            animation: fadeInScale 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            backdrop-filter: blur(5px);
+        }
+
+        .quote-box {
+            margin: 40px auto;
+            background: rgba(17, 17, 17, 0.9);
+            border-left: 6px solid #ff1a1a;
+            border-right: 6px solid #8b0000;
+            padding: 25px;
+            width: 70%;
+            font-size: 1.6rem;
+            line-height: 2.2rem;
+            box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            /* Added entrance animation for main quote */
+            animation: fadeInScale 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            backdrop-filter: blur(5px);
+        }
+
+        .main-week-number {
+            font-size: 2.2rem;
+            color: #ff1a1a;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .main-quote-text {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-top: 6px;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .week-badge {
+            float: right;
+            background: linear-gradient(90deg,#8b0000,#ff1a1a);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            /* Added pulse animation to badge */
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 26, 26, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 26, 26, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 26, 26, 0); }
+        }
+
+        /* Fade-in animation for list items */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .quote-item {
+            background: rgba(22, 22, 22, 0.8);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #8b0000;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 6px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation-name: fadeInUp;
+            animation-duration: 800ms;
+            animation-fill-mode: forwards;
+            animation-timing-function: cubic-bezier(.16,.84,.24,1);
+            /* Added border for better contrast */
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #8b0000;
+        }
+
+        .quote-item:hover {
+            background: #1d1d1d;
+            transform: scale(1.02) translateX(5px);
+            box-shadow: -5px 5px 20px rgba(0,0,0,0.5);
+            border-left-color: #ff1a1a;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 2rem;
+            color: #ff1a1a;
+            text-shadow: 0 0 10px rgba(255,0,0,0.6);
+            /* Added tracking-in animation */
+            animation: trackingIn 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes trackingIn {
+            0% { letter-spacing: -0.5em; opacity: 0; }
+            40% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .previous-list {
+            margin: 20px auto;
+            width: 70%;
+            padding: 10px;
+            overflow: hidden;
+            transition: max-height 0.7s cubic-bezier(.2,.9,.2,1), min-height 0.7s cubic-bezier(.2,.9,.2,1);
+            max-height: 5000px; /* Large enough for many quotes */
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #777;
+            /* Added fade in for footer */
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>Easa's Full Bio</header>
+
+    <div class="pfp-box" id="pfp" style="text-align: center;">
+        <img src="https://cdn.discordapp.com/attachments/1425984383260561509/1513075038918807602/59095286987e96c3435385f1ef282003_1.png?ex=6a266870&is=6a2516f0&hm=1ebd3b82a8d8e72bcb258afa22ec59238ffdc3ba297d12f551828bcd15b26d5e&" alt="Loading..." style="width:100%; border-radius: 6px; opacity: 0.8;">
+    </div>
+
+    <div class="bio-box" id="quoteOfWeek">
+        Hello, my name is <span style="color: #ff1a1a;">Easa</span>. Thanks for wanting to know more about me. I am a <span style="color: #ff1a1a;">16</span> year old programmer, gamer, and friend. I have been programming for about 7 or so years, with 1 year and a half experience. 
+        
+        <ul>
+            <li>I enjoy meeting new people, I love talking to old friends.</li>
+            <li>I am open in terms of talking about anything, feel free to reach out to me if you want and/or need to.</li>
+            <li>I am online almost everyday, most of the day.</li>
+            <li>I usually am doing nothing until someone finally wants to do something.</li>
+            <li>I am respectful, understanding, and responsible.</li>
+        <br>I love to chill to music, game, story telling, and just overall hang out to have a great time.  
+        </ul>
+
+        <!-- <div class="week-badge" id="currentWeekLabel">Week ?</div>
+        "Success is not final, failure is not fatal: It is the courage to continue that counts."
+        <br><br> -->
+        <br><br>
+        <span style="font-size: 1.2rem; color: #ff1a1a;">— Easa</span>
+    </div>
+
+    <div class="section-title">Previous Quotes</div>
+
+    <div class="previous-list" id="previousQuotes">
+        <!-- Previous quotes will be loaded here from /PreviousQuotes/*.json -->
+    </div>
+
+    <script>
+        (function loadPreviousQuotes() {
+            const container = document.getElementById('previousQuotes');
+
+            function makeItem(quote, author, week, monthYear, index) {
+                const div = document.createElement('div');
+                div.className = 'quote-item';
+
+                const badge = document.createElement('div');
+                badge.className = 'week-badge';
+                badge.style.float = 'right';
+                badge.textContent = `Week ${week} - ${monthYear}`;
+
+                const text = document.createElement('div');
+                text.innerHTML = `${quote} <br><br> <span style=\"font-size: 1.0rem; color: #ff1a1a;\">— ${author}</span>`;
+
+                div.appendChild(badge);
+                div.appendChild(text);
+
+                // Staggered fade-in: delay increases down the list
+                div.style.animationDelay = `${index * 0.14}s`;
+                return div;
+            }
+
+            // ISO week helpers
+            function getISOWeek(date) {
+                const tmp = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+                // Thursday in current week decides the year.
+                tmp.setUTCDate(tmp.getUTCDate() + 4 - (tmp.getUTCDay()||7));
+                const yearStart = new Date(Date.UTC(tmp.getUTCFullYear(),0,1));
+                const weekNo = Math.ceil((((tmp - yearStart) / 86400000) + 1)/7);
+                return { year: tmp.getUTCFullYear(), week: weekNo };
+            }
+
+            function dateOfISOWeek(isoWeek, isoYear) {
+                const simple = new Date(Date.UTC(isoYear, 0, 1 + (isoWeek - 1) * 7));
+                const dow = simple.getUTCDay();
+                let ISOweekStart = new Date(simple);
+                if (dow <= 4) ISOweekStart.setUTCDate(simple.getUTCDate() - simple.getUTCDay() + 1);
+                else ISOweekStart.setUTCDate(simple.getUTCDate() + 8 - simple.getUTCDay());
+                return ISOweekStart; // Monday of that ISO week
+            }
+
+            function pad(n){ return n < 10 ? '0'+n : ''+n; }
+
+            function formatMMYY(date) {
+                const m = date.getUTCMonth() + 1; // 1-12
+                const y = date.getUTCFullYear() % 100; // two-digit year
+                return `${pad(m)}/${pad(y)}`;
+            }
+
+            // Strategy: try to fetch files named Week1.json, Week2.json, ...
+            // Stop after 12 consecutive misses to avoid excessive requests.
+            const maxTry = 200;
+            let consecutiveMisses = 0;
+            const maxConsecutiveMisses = 12;
+
+            let foundAny = false;
+
+            // Kick off sequential fetches to allow early termination on consecutive misses.
+            (async () => {
+                const found = [];
+                let currentObj = null;
+
+                // First, try to fetch a Week*.json file from the root (current week)
+                for (let i = 1; i <= 200; i++) {
+                    const path = `Week${i}.json`;
+                    try {
+                        const res = await fetch(path);
+                        if (res.ok) {
+                            const data = await res.json();
+                            const quoteText = data.Quote || data.quote || '';
+                            const author = data.Author || data.author || '';
+                            currentObj = { week: i, quote: quoteText, author };
+                            break; // Use the first one found as current
+                        }
+                    } catch (err) {
+                        // Continue searching
+                    }
+                }
+
+                // Then, fetch files from PreviousQuotes/ folder
+                for (let i = 1; i <= maxTry; i++) {
+                    const path = `PreviousQuotes/Week${i}.json`;
+                    try {
+                        const res = await fetch(path);
+                        if (!res.ok) {
+                            consecutiveMisses++;
+                            if (consecutiveMisses >= maxConsecutiveMisses) break;
+                            continue;
+                        }
+
+                        consecutiveMisses = 0;
+                        foundAny = true;
+                        const data = await res.json();
+                        const quoteText = data.Quote || data.quote || '';
+                        const author = data.Author || data.author || '';
+                        found.push({ week: i, quote: quoteText, author });
+                    } catch (err) {
+                        consecutiveMisses++;
+                        if (consecutiveMisses >= maxConsecutiveMisses) break;
+                        continue;
+                    }
+                }
+
+                if (!currentObj && !foundAny) {
+                    const note = document.createElement('div');
+                    note.className = 'quote-item';
+                    note.textContent = 'No previous quotes found in the PreviousQuotes folder.';
+                    container.appendChild(note);
+                    return;
+                }
+
+                // If no root-level file found, use the smallest from PreviousQuotes/ as current
+                if (!currentObj && found.length > 0) {
+                    const weeks = found.map(f => f.week);
+                    const minWeek = Math.min(...weeks);
+                    const currentIndex = found.findIndex(f => f.week === minWeek);
+                    if (currentIndex >= 0) {
+                        currentObj = found.splice(currentIndex, 1)[0];
+                    }
+                }
+
+                // Sort remaining previous weeks by week descending (newest-first)
+                found.sort((a, b) => b.week - a.week);
+
+                // currentWeek is the week number from the first (smallest) file
+                const currentWeek = currentObj ? currentObj.week : (found.length ? found[0].week + 1 : 1);
+                const currentLabel = document.getElementById('currentWeekLabel');
+
+                // Compute current ISO week/year from today's date
+                const today = new Date();
+                const currentISO = getISOWeek(today);
+
+                // get Monday of current ISO week
+                const currentISOWeekStart = dateOfISOWeek(currentISO.week, currentISO.year);
+                if (currentLabel) currentLabel.textContent = `Week ${currentWeek} - ${formatMMYY(currentISOWeekStart)}`;
+
+                // If we found a currentObj, populate the main quote box with its content
+                const mainBox = document.getElementById('quoteOfWeek');
+                if (!currentObj && mainBox) {
+                    mainBox.innerHTML =
+                        `<div class="week-badge" id="currentWeekLabel">Week ${currentWeek} - ${formatMMYY(currentISOWeekStart)}</div>` +
+                        `<div class="main-week-number">Week ${currentWeek}</div>` +
+                        `<div class="main-quote-text">${currentObj.quote}</div>` +
+                        `<br><span style="font-size: 1.2rem; color: #ff1a1a;">— ${currentObj.author}</span>`;
+                }
+
+                // Update Open Graph meta tags for link previews
+                if (currentObj) {
+                    document.querySelector('meta[property="og:title"]').setAttribute('content', `Week ${currentWeek} - Easa's Full Bio`);
+                    document.querySelector('meta[property="og:description"]').setAttribute('content', `"${currentObj.quote}" — ${currentObj.author}`);
+                    document.querySelector('meta[property="twitter:title"]').setAttribute('content', `Week ${currentWeek} - Easa's Full Bio`);
+                    document.querySelector('meta[property="twitter:description"]').setAttribute('content', `"${currentObj.quote}" — ${currentObj.author}`);
+                }
+
+                // Animate container height as items are added, and auto-scroll if at bottom
+                let prevHeight = container.offsetHeight;
+                let atBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 2);
+
+                for (let i = 0; i < found.length; i++) {
+                    const item = found[i];
+
+                    // Compute month/year label for this item by subtracting weeks from current ISO week
+                    const offsetWeeks = currentWeek - item.week; // how many weeks before current
+                    const itemDate = new Date(currentISOWeekStart);
+                    itemDate.setUTCDate(itemDate.getUTCDate() - offsetWeeks * 7);
+                    const monthYear = formatMMYY(itemDate);
+
+                    // Before adding, measure height
+                    prevHeight = container.offsetHeight;
+                    const el = makeItem(item.quote, item.author, item.week, monthYear, i);
+                    container.appendChild(el);
+
+                    // After adding, animate container height
+                    const newHeight = container.offsetHeight;
+                    container.style.minHeight = prevHeight + 'px';
+                    container.style.maxHeight = newHeight + 'px';
+                    // Force reflow for transition
+                    void container.offsetWidth;
+                    container.style.minHeight = '';
+                    container.style.maxHeight = '';
+
+                    // If user was at bottom, scroll to bottom after each add
+                    if (atBottom) {
+                        setTimeout(() => {
+                            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                        }, (i+1) * 140 + 150); // after fade-in
+                    }
+                }
+            })();
+        })();
+    </script>
+</body>
+</html>
