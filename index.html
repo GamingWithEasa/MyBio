@@ -63,6 +63,40 @@
             animation: shimmer 3s infinite;
         }
 
+        .shimmer-text {
+            /* Define variables with default fallback colors */
+            --base-color: var(--shimmer-base, #8b0000);
+            /* --mid-color: var(--shimmer-mid, #ff1a1a); */
+            --glow-color: var(--shimmer-glow, #ffffff);
+
+            /* Construct the gradient using those variables */
+            background: linear-gradient(
+                55deg,   
+                var(--base-color) 25%, 
+                var(--glow-color) 50%, 
+                var(--base-color) 100%
+                
+                /* var(--base-color) 0%, 
+                var(--mid-color) 40%, 
+                var(--glow-color) 50%, 
+                var(--mid-color) 60%, 
+                var(--base-color) 100% */
+            );
+            background-size: 200% auto;
+            
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            animation: textShimmer 4s infinite;
+        }
+
+        @keyframes textShimmer {
+            0% { background-position: 155% center; }
+            100% { background-position: -245% center; }
+        }
+
+
         @keyframes slideDown {
             from { transform: translateY(-100%); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
@@ -238,7 +272,7 @@
         <img src="Assets/Images/PFP.jpg" alt="Loading..." style="width:100%; border-radius: 600000px; opacity: 0.8; ">
     </div>
 
-    <div class="bio-box" id="quoteOfWeek">
+    <div class="bio-box">
         <!-- Hello, my name is <span style="color: #ff1a1a;">Easa</span>. Thanks for wanting to know more about me. I am a <span style="color: #ff1a1a;">16</span> year old programmer, gamer, and friend. I have been programming for about 7 or so years, with 1 year and a half experience.  -->
         Hello, my name is <span style="color: #ff1a1a;">Easa</span>. Thanks for wanting to know more about me. I am a 16 year old programmer, gamer, and friend. I have been programming for about 7 or so years, with 1 year and a half experience.
         <ul>
@@ -247,14 +281,15 @@
             <li>I am online almost everyday, most of the day.</li>
             <li>I usually am doing nothing until someone finally wants to do something.</li>
             <li>I am respectful, understanding, and responsible.</li>
+            <li>I love to chill to music, game, story telling, and just overall hang out to have a great time. </li>
         </ul>
-            I love to chill to music, game, story telling, and just overall hang out to have a great time.  
 
-        <!-- <div class="week-badge" id="currentWeekLabel">Week ?</div>
+        <br>
+        <div class="week-badge" id="currentWeekLabel">Week ?</div>
         "Success is not final, failure is not fatal: It is the courage to continue that counts."
-        <br><br> -->
         <br><br>
-        <span style="font-size: 1.2rem; color: #ff1a1a;">— Easa</span>
+        
+        <span style="font-size: 1.2rem; color: #ff1a1a;">— </span><span class="shimmer-text" style="font-size: 1.2rem; ">Easa</span>
     </div>
 
     <!-- <div class="section-title">Previous Quotes</div>
