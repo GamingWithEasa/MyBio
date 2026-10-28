@@ -128,7 +128,7 @@
             /* border-left: 6px solid #ff1a1a;
             border-right: 6px solid #8b0000; */
             /* padding: 25px; */
-            width: 35%;
+            width: 70% auto;
             /* line-height: 1.8rem; */
             box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
             /* border-radius: 100000px; */
@@ -286,13 +286,48 @@
     <!-- <div class="pfp-box" id="pfp" style="text-align: center;">
         <img src="Assets/Images/PFP.jpg" alt="Loading..." style="width:100%; border-radius: 600000px; opacity: 0.8; ">
     </div> -->
-
+    
     <div style="text-align: center;">
-        <img  class="dpf-box" id="dpf-box" src="https://lanyard.cnrad.dev/api/580864877497679892" 
-     alt="Discord Presence" 
-     width="auto" 
-     height="auto" 
-     style="border-radius:10px;">
+        <img class="dpf-box" id="dpf-box" src="https://lanyard.cnrad.dev/api/580864877497679892"
+        alt="Discord Presence"
+        width="auto"
+        height="auto"
+        style="border-radius:10px;">
+    </div>
+    
+    <div>
+        <section id="discord-card" aria-live="polite" style="width:min(70%,560px);margin:40px auto;padding:24px;box-sizing:border-box;text-align:center;background:rgba(17,17,17,.9);border:1px solid rgba(255,26,26,.55);border-radius:10px;box-shadow:0 0 36px rgba(255,0,0,.2);">
+            <!-- <div>
+                <img src="Assets/Images/PFP.jpg" alt="Loading..." style="width:10%; border-radius: 600000px; opacity: 0.8; ">
+                <h2 id="discord-username"></h2>
+            </div> -->
+
+            <div id="discord-card" class="discord-card">
+              <div class="profile-header">
+                <div class="avatar-container">
+                    <img id="discord-avatar" alt="Discord avatar" style="width:96px; height:96px; border-radius:50%; object-fit:cover;">
+                    <!-- <img id="discord-avatar" src="" alt="Discord Avatar" /> -->
+                    <span id="discord-status-indicator" class="status-dot"></span>
+                    <span id="discord-status-text"></span>
+                </div>
+                <div class="profile-info">
+                  <h3 id="discord-username">Loading...</h3>
+                  <p id="discord-discriminator">@</p>
+                </div>
+              </div>
+              <div class="activity-section">
+                <p id="discord-custom-status"></p>
+                <p id="discord-activity"></p>
+              </div>
+            </div>
+            
+            <!-- <div id="discord-signed-in">
+                <img id="discord-avatar" alt="Discord avatar" style="width:96px;height:96px;border-radius:50%;object-fit:cover;">
+                <h2 id="discord-username">Loading username...</h2>
+                <p id="discord-status">Loading status...</p>
+                <div id="discord-activities">Loading activities...</div>
+            </div> -->
+        </section>
     </div>
 
     <div class="bio-box">
@@ -318,201 +353,13 @@
     <!-- <div class="section-title">Previous Quotes</div>
 
     <div class="previous-list" id="previousQuotes">
-        <!-- Previous quotes will be loaded here from /PreviousQuotes/*.json -->
-    </div>
+        Previous quotes will be loaded here from /PreviousQuotes/*.json
+    </div> -->
 
-    <script>
-        (function loadPreviousQuotes() {
-            const container = document.getElementById('previousQuotes');
+    
 
-            function makeItem(quote, author, week, monthYear, index) {
-                const div = document.createElement('div');
-                div.className = 'quote-item';
-
-                const badge = document.createElement('div');
-                badge.className = 'week-badge';
-                badge.style.float = 'right';
-                badge.textContent = `Week ${week} - ${monthYear}`;
-
-                const text = document.createElement('div');
-                text.innerHTML = `${quote} <br><br> <span style=\"font-size: 1.0rem; color: #ff1a1a;\">— ${author}</span>`;
-
-                div.appendChild(badge);
-                div.appendChild(text);
-
-                // Staggered fade-in: delay increases down the list
-                div.style.animationDelay = `${index * 0.14}s`;
-                return div;
-            }
-
-            // ISO week helpers
-            function getISOWeek(date) {
-                const tmp = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-                // Thursday in current week decides the year.
-                tmp.setUTCDate(tmp.getUTCDate() + 4 - (tmp.getUTCDay()||7));
-                const yearStart = new Date(Date.UTC(tmp.getUTCFullYear(),0,1));
-                const weekNo = Math.ceil((((tmp - yearStart) / 86400000) + 1)/7);
-                return { year: tmp.getUTCFullYear(), week: weekNo };
-            }
-
-            function dateOfISOWeek(isoWeek, isoYear) {
-                const simple = new Date(Date.UTC(isoYear, 0, 1 + (isoWeek - 1) * 7));
-                const dow = simple.getUTCDay();
-                let ISOweekStart = new Date(simple);
-                if (dow <= 4) ISOweekStart.setUTCDate(simple.getUTCDate() - simple.getUTCDay() + 1);
-                else ISOweekStart.setUTCDate(simple.getUTCDate() + 8 - simple.getUTCDay());
-                return ISOweekStart; // Monday of that ISO week
-            }
-
-            function pad(n){ return n < 10 ? '0'+n : ''+n; }
-
-            function formatMMYY(date) {
-                const m = date.getUTCMonth() + 1; // 1-12
-                const y = date.getUTCFullYear() % 100; // two-digit year
-                return `${pad(m)}/${pad(y)}`;
-            }
-
-            // Strategy: try to fetch files named Week1.json, Week2.json, ...
-            // Stop after 12 consecutive misses to avoid excessive requests.
-            const maxTry = 200;
-            let consecutiveMisses = 0;
-            const maxConsecutiveMisses = 12;
-
-            let foundAny = false;
-
-            // Kick off sequential fetches to allow early termination on consecutive misses.
-            (async () => {
-                const found = [];
-                let currentObj = null;
-
-                // First, try to fetch a Week*.json file from the root (current week)
-                for (let i = 1; i <= 200; i++) {
-                    const path = `Week${i}.json`;
-                    try {
-                        const res = await fetch(path);
-                        if (res.ok) {
-                            const data = await res.json();
-                            const quoteText = data.Quote || data.quote || '';
-                            const author = data.Author || data.author || '';
-                            currentObj = { week: i, quote: quoteText, author };
-                            break; // Use the first one found as current
-                        }
-                    } catch (err) {
-                        // Continue searching
-                    }
-                }
-
-                // Then, fetch files from PreviousQuotes/ folder
-                for (let i = 1; i <= maxTry; i++) {
-                    const path = `PreviousQuotes/Week${i}.json`;
-                    try {
-                        const res = await fetch(path);
-                        if (!res.ok) {
-                            consecutiveMisses++;
-                            if (consecutiveMisses >= maxConsecutiveMisses) break;
-                            continue;
-                        }
-
-                        consecutiveMisses = 0;
-                        foundAny = true;
-                        const data = await res.json();
-                        const quoteText = data.Quote || data.quote || '';
-                        const author = data.Author || data.author || '';
-                        found.push({ week: i, quote: quoteText, author });
-                    } catch (err) {
-                        consecutiveMisses++;
-                        if (consecutiveMisses >= maxConsecutiveMisses) break;
-                        continue;
-                    }
-                }
-
-                if (!currentObj && !foundAny) {
-                    const note = document.createElement('div');
-                    note.className = 'quote-item';
-                    note.textContent = 'No previous quotes found in the PreviousQuotes folder.';
-                    container.appendChild(note);
-                    return;
-                }
-
-                // If no root-level file found, use the smallest from PreviousQuotes/ as current
-                if (!currentObj && found.length > 0) {
-                    const weeks = found.map(f => f.week);
-                    const minWeek = Math.min(...weeks);
-                    const currentIndex = found.findIndex(f => f.week === minWeek);
-                    if (currentIndex >= 0) {
-                        currentObj = found.splice(currentIndex, 1)[0];
-                    }
-                }
-
-                // Sort remaining previous weeks by week descending (newest-first)
-                found.sort((a, b) => b.week - a.week);
-
-                // currentWeek is the week number from the first (smallest) file
-                const currentWeek = currentObj ? currentObj.week : (found.length ? found[0].week + 1 : 1);
-                const currentLabel = document.getElementById('currentWeekLabel');
-
-                // Compute current ISO week/year from today's date
-                const today = new Date();
-                const currentISO = getISOWeek(today);
-
-                // get Monday of current ISO week
-                const currentISOWeekStart = dateOfISOWeek(currentISO.week, currentISO.year);
-                if (currentLabel) currentLabel.textContent = `Week ${currentWeek} - ${formatMMYY(currentISOWeekStart)}`;
-
-                // If we found a currentObj, populate the main quote box with its content
-                const mainBox = document.getElementById('quoteOfWeek');
-                if (!currentObj && mainBox) {
-                    mainBox.innerHTML =
-                        `<div class="week-badge" id="currentWeekLabel">Week ${currentWeek} - ${formatMMYY(currentISOWeekStart)}</div>` +
-                        `<div class="main-week-number">Week ${currentWeek}</div>` +
-                        `<div class="main-quote-text">${currentObj.quote}</div>` +
-                        `<br><span style="font-size: 1.2rem; color: #ff1a1a;">— ${currentObj.author}</span>`;
-                }
-
-                // Update Open Graph meta tags for link previews
-                if (currentObj) {
-                    document.querySelector('meta[property="og:title"]').setAttribute('content', `Week ${currentWeek} - Easa's Full Bio`);
-                    document.querySelector('meta[property="og:description"]').setAttribute('content', `"${currentObj.quote}" — ${currentObj.author}`);
-                    document.querySelector('meta[property="twitter:title"]').setAttribute('content', `Week ${currentWeek} - Easa's Full Bio`);
-                    document.querySelector('meta[property="twitter:description"]').setAttribute('content', `"${currentObj.quote}" — ${currentObj.author}`);
-                }
-
-                // Animate container height as items are added, and auto-scroll if at bottom
-                let prevHeight = container.offsetHeight;
-                let atBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 2);
-
-                for (let i = 0; i < found.length; i++) {
-                    const item = found[i];
-
-                    // Compute month/year label for this item by subtracting weeks from current ISO week
-                    const offsetWeeks = currentWeek - item.week; // how many weeks before current
-                    const itemDate = new Date(currentISOWeekStart);
-                    itemDate.setUTCDate(itemDate.getUTCDate() - offsetWeeks * 7);
-                    const monthYear = formatMMYY(itemDate);
-
-                    // Before adding, measure height
-                    prevHeight = container.offsetHeight;
-                    const el = makeItem(item.quote, item.author, item.week, monthYear, i);
-                    container.appendChild(el);
-
-                    // After adding, animate container height
-                    const newHeight = container.offsetHeight;
-                    container.style.minHeight = prevHeight + 'px';
-                    container.style.maxHeight = newHeight + 'px';
-                    // Force reflow for transition
-                    void container.offsetWidth;
-                    container.style.minHeight = '';
-                    container.style.maxHeight = '';
-
-                    // If user was at bottom, scroll to bottom after each add
-                    if (atBottom) {
-                        setTimeout(() => {
-                            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                        }, (i+1) * 140 + 150); // after fade-in
-                    }
-                }
-            })();
-        })();
-    </script>
 </body>
+
+<script src="lanyard-api.js"></script>
+
 </html>
