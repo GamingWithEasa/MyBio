@@ -9,7 +9,7 @@
     <meta property="og:url" content="https://gamingwitheasa.github.io/MyBio/" />
     <meta property="og:title" content="Easa's Full Bio" />
     <meta property="og:description" content="Discover the Easa's Full Bio" />
-    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Quote+of+the+Week" />
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Easa's+Bio" />
     <meta property="og:site_name" content="Easa's Full Bio" />
     <!-- Twitter Card meta tags -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -67,7 +67,7 @@
             /* Define variables with default fallback colors */
             --base-color: var(--shimmer-base, #8b0000);
             /* --mid-color: var(--shimmer-mid, #ff1a1a); */
-            --glow-color: var(--shimmer-glow, #ffffff);
+            --glow-color: var(--shimmer-glow, #FFFAFA);
 
             /* Construct the gradient using those variables */
             background: linear-gradient(
@@ -117,6 +117,21 @@
             /* line-height: 1.8rem; */
             box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
             border-radius: 100000px;
+            /* Added entrance animation for profile picture */
+            animation: fadeInScale 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            backdrop-filter: blur(5px);
+        }
+
+        .dpf-box {
+            margin: 50px auto;
+            /* background: rgba(17, 17, 17, 0.9); */
+            /* border-left: 6px solid #ff1a1a;
+            border-right: 6px solid #8b0000; */
+            /* padding: 25px; */
+            width: 35%;
+            /* line-height: 1.8rem; */
+            box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
+            /* border-radius: 100000px; */
             /* Added entrance animation for profile picture */
             animation: fadeInScale 1s cubic-bezier(0.2, 0.8, 0.2, 1);
             backdrop-filter: blur(5px);
@@ -268,8 +283,16 @@
 <body>
     <header>Easa's Full Bio</header>
 
-    <div class="pfp-box" id="pfp" style="text-align: center;">
+    <!-- <div class="pfp-box" id="pfp" style="text-align: center;">
         <img src="Assets/Images/PFP.jpg" alt="Loading..." style="width:100%; border-radius: 600000px; opacity: 0.8; ">
+    </div> -->
+
+    <div style="text-align: center;">
+        <img  class="dpf-box" id="dpf-box" src="https://lanyard.cnrad.dev/api/580864877497679892" 
+     alt="Discord Presence" 
+     width="auto" 
+     height="auto" 
+     style="border-radius:10px;">
     </div>
 
     <div class="bio-box">
