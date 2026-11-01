@@ -16,269 +16,7 @@
     <meta property="twitter:title" content="Easa's Full Bio" />
     <meta property="twitter:description" content="Discover the Easa's Full Bio" />
     <meta property="twitter:image" content="https://via.placeholder.com/1200x630?text=Easa's+Bio" />
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            /* Updated background to animated gradient */
-            background: #000000;
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #ffffff;
-            min-height: 100vh;
-        }
-
-        /* Added background animation keyframes */
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        header {
-            background: linear-gradient(90deg, #8b0000, #ff1a1a);
-            padding: 20px;
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: white;
-            /* Added header entrance animation */
-            animation: slideDown 1s ease-out;
-            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Added shimmer effect to header */
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        .shimmer-text {
-            /* Define variables with default fallback colors */
-            --base-color: var(--shimmer-base, #8b0000);
-            /* --mid-color: var(--shimmer-mid, #ff1a1a); */
-            --glow-color: var(--shimmer-glow, #FFFAFA);
-
-            /* Construct the gradient using those variables */
-            background: linear-gradient(
-                55deg,   
-                var(--base-color) 25%, 
-                var(--glow-color) 50%, 
-                var(--base-color) 100%
-                
-                /* var(--base-color) 0%, 
-                var(--mid-color) 40%, 
-                var(--glow-color) 50%, 
-                var(--mid-color) 60%, 
-                var(--base-color) 100% */
-            );
-            background-size: 200% auto;
-            
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            
-            animation: textShimmer 4s infinite;
-        }
-
-        @keyframes textShimmer {
-            0% { background-position: 155% center; }
-            100% { background-position: -245% center; }
-        }
-
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .pfp-box {
-            margin: 40px auto;
-            background: rgba(17, 17, 17, 0.9);
-            /* border-left: 6px solid #ff1a1a;
-            border-right: 6px solid #8b0000; */
-            /* padding: 25px; */
-            width: 25%;
-            /* line-height: 1.8rem; */
-            box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
-            border-radius: 100000px;
-            /* Added entrance animation for profile picture */
-            animation: fadeInScale 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-            backdrop-filter: blur(5px);
-        }
-
-        .dpf-box {
-            margin: 50px auto;
-            /* background: rgba(17, 17, 17, 0.9); */
-            /* border-left: 6px solid #ff1a1a;
-            border-right: 6px solid #8b0000; */
-            /* padding: 25px; */
-            width: 70% auto;
-            /* line-height: 1.8rem; */
-            box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
-            /* border-radius: 100000px; */
-            /* Added entrance animation for profile picture */
-            animation: fadeInScale 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-            backdrop-filter: blur(5px);
-        }
-
-        .bio-box {
-            margin: 40px auto;
-            background: rgba(17, 17, 17, 0.9);
-            border-left: 6px solid #ff1a1a;
-            border-right: 6px solid #8b0000;
-            padding: 25px;
-            width: 70%;
-            font-size: 1.2rem;
-            line-height: 1.8rem;
-            box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
-            border-radius: 10px;
-            /* Added entrance animation for bio */
-            animation: fadeInScale 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-            backdrop-filter: blur(5px);
-        }
-
-        .quote-box {
-            margin: 40px auto;
-            background: rgba(17, 17, 17, 0.9);
-            border-left: 6px solid #ff1a1a;
-            border-right: 6px solid #8b0000;
-            padding: 25px;
-            width: 70%;
-            font-size: 1.6rem;
-            line-height: 2.2rem;
-            box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
-            border-radius: 10px;
-            /* Added entrance animation for main quote */
-            animation: fadeInScale 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-            backdrop-filter: blur(5px);
-        }
-
-        .main-week-number {
-            font-size: 2.2rem;
-            color: #ff1a1a;
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
-
-        .main-quote-text {
-            font-size: 1.6rem;
-            color: #ffffff;
-            margin-top: 6px;
-        }
-
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.9) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .week-badge {
-            float: right;
-            background: linear-gradient(90deg,#8b0000,#ff1a1a);
-            color: white;
-            padding: 6px 10px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-            /* Added pulse animation to badge */
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 26, 26, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 26, 26, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 26, 26, 0); }
-        }
-
-        /* Fade-in animation for list items */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .quote-item {
-            background: rgba(22, 22, 22, 0.8);
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 4px solid #8b0000;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border-radius: 6px;
-            opacity: 0;
-            transform: translateY(10px);
-            animation-name: fadeInUp;
-            animation-duration: 800ms;
-            animation-fill-mode: forwards;
-            animation-timing-function: cubic-bezier(.16,.84,.24,1);
-            /* Added border for better contrast */
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-left: 4px solid #8b0000;
-        }
-
-        .quote-item:hover {
-            background: #1d1d1d;
-            transform: scale(1.02) translateX(5px);
-            box-shadow: -5px 5px 20px rgba(0,0,0,0.5);
-            border-left-color: #ff1a1a;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-top: 60px;
-            font-size: 2rem;
-            color: #ff1a1a;
-            text-shadow: 0 0 10px rgba(255,0,0,0.6);
-            /* Added tracking-in animation */
-            animation: trackingIn 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-            animation-delay: 0.5s;
-        }
-
-        @keyframes trackingIn {
-            0% { letter-spacing: -0.5em; opacity: 0; }
-            40% { opacity: 0.6; }
-            100% { opacity: 1; }
-        }
-
-        .previous-list {
-            margin: 20px auto;
-            width: 70%;
-            padding: 10px;
-            overflow: hidden;
-            transition: max-height 0.7s cubic-bezier(.2,.9,.2,1), min-height 0.7s cubic-bezier(.2,.9,.2,1);
-            max-height: 5000px; /* Large enough for many quotes */
-        }
-
-        footer {
-            margin-top: 60px;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
-            color: #777;
-            /* Added fade in for footer */
-            animation: fadeIn 2s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>Easa's Full Bio</header>
@@ -286,99 +24,108 @@
     <!-- <div class="pfp-box" id="pfp" style="text-align: center;">
         <img src="Assets/Images/PFP.jpg" alt="Loading..." style="width:100%; border-radius: 600000px; opacity: 0.8; ">
     </div> -->
-
-    <div style="text-align: center;">
-        <!-- CHEESSS -->
+    
+    <!-- <div style="text-align: center;">
         <img class="dpf-box" id="dpf-box" src="https://lanyard.cnrad.dev/api/580864877497679892"
-             alt="Discord Presence"
-             width="auto"
-             height="auto"
-             style="border-radius:10px;">
-    </div>
-
-    <div>
-        <section id="discord-card" aria-live="polite" style="width:min(70%,560px);margin:40px auto;padding:24px;box-sizing:border-box;text-align:center;background:rgba(17,17,17,.9);border:1px solid rgba(255,26,26,.55);border-radius:10px;box-shadow:0 0 36px rgba(255,0,0,.2);">
-            <div id="discord-signed-out">
-                <p id="discord-message">Checking Discord sign-in...</p>
-                <a href="/login" style="display:inline-block;margin-top:12px;padding:10px 16px;border-radius:6px;background:#5865f2;color:white;text-decoration:none;">Sign in with Discord</a>
-            </div>
-            <div id="discord-signed-in" hidden>
-                <img id="discord-avatar" alt="Discord avatar" hidden style="width:96px;height:96px;border-radius:50%;object-fit:cover;">
+        alt="Discord Presence"
+        width="auto"
+        height="auto"
+        style="border-radius:10px;">
+    </div> -->
+    
+    <!-- <div class="dpf-bo"> -->
+        <!-- <section id="discord-card" aria-live="polite" style="width:min(70%,560px);margin:40px auto;padding:24px;box-sizing:border-box;text-align:center;background:rgba(17,17,17,.9);border:1px solid rgba(255,26,26,.55);border-radius:10px;box-shadow:0 0 36px rgba(255,0,0,.2);"> -->
+        <section id="discord-card" aria-live="polite" class="dpf-box"style="width:min(70%,560px);margin:40px auto;padding:24px;box-sizing:border-box;text-align:center;background:rgba(17,17,17,.9);border:1px solid rgba(255,26,26,.55);">
+            <!-- <div>
+                <img src="Assets/Images/PFP.jpg" alt="Loading..." style="width:10%; border-radius: 600000px; opacity: 0.8; ">
                 <h2 id="discord-username"></h2>
-                <p id="discord-status">Loading presence...</p>
-                <div id="discord-activities"></div>
-                <button id="discord-logout" type="button" style="margin-top:12px;padding:10px 16px;border:0;border-radius:6px;background:#5865f2;color:white;cursor:pointer;">Sign out</button>
+            </div> -->
+
+            <div id="discord-card" class="discord-card">
+                <div class="profile-header">
+                    <div class="avatar-container">
+                        <img id="discord-avatar" alt="Discord avatar" style="width:96px; height:96px; border-radius:50%; object-fit:cover;">
+                        
+                        <div id="discord-status-indicator" class="status-dot">
+                            <svg viewBox="0 0 16 16" aria-hidden="true" transform="rotate(-90)" id="idle" class="idle" style="background-color: #111111; display: none">
+                                <path d="M15.4 8A7.4 7.4 0 1 1 8 .6 6 6 0 0 0 15.4 8Z"></path>
+                            </svg>
+
+                            <svg viewBox="0 0 16 16" aria-hidden="true" id="offline" class="offline" style="background-color: #111111; display: none">
+                                <circle cx="8" cy="8" r="5.5" fill="none" stroke-width="3"></circle>
+                            </svg>
+                        </div>
+                        <!-- <span id="discord-status-text"></span> -->
+                    </div>
+                <div class="profile-info">
+                    <div id="discord-username" class="header3">Loading...</div>
+                    <div id="discord-discriminator" style="color: #a0a0a0; text-align: left;">
+                        @Loading...
+                    </div>
+                </div>
+            </div>
+
+            <div id="discord-status-text" class="status-text-box">
+                <div id="status-placeholder" style="color: #9c9c9c9c; font-weight: bold; font-style:italic; font-size: 0.819rem;">
+                    Not currently thinking about anything, just chilling and enjoying the moment.
+                </div>
+
+                <p id="discord-custom-status" style="text-align: left; margin: 0; font-size: 0.85rem; line-height: 1.3; word-break: break-word;">
+                <!-- <p id="discord-custom-status" style="margin: 0;"> -->
+                    <!-- HELLO THERE HOW ARE YOU dsf sdf dsf sdf dsf sdf sdf sdf sdf sdf sdf s -->
+                </p>
+            </div>
+
+            <div class="activity-section">
+                <br><p style="text-align: left;">Current Activites</p>
+                <!-- <p id="discord-activity"></p> -->
+                
+                <div class="dpf-box discord-activity">
+                    <p id="discord-activity" class="discord-activity-status"></p>
+                    
+                    <div style="display: flex; align-items: center; text-align: left;">
+                        <div class="discord-activity-icon">
+                            <img id="activity-img" alt="Activity Image" style="border-radius: 10px;">
+                            <img id="activity-status-indicator" src="" class="status-dot-activity"/>
+                        </div>
+
+                        <div id="activity-description">
+                            
+                        </div>
+
+                        <div class="profile-info" style="width: 300px;">
+                            <div id="activity-stats-title" class="header3">Loading...</div>
+                            <div id="activity-stats-description" style="color: #a0a0a0; text-align: left;">
+                                Loading...
+                            </div>
+                            <div id="activity-timer" style="margin-top: 10px;">
+                                <div class="sc-bkbknG discord-activity-timer">
+                                    <div class="sc-fFSRQT activity-timer-timestamps">
+                                        <p class="sc-hHEhmb timer-timestamps-text">00:00</p>
+                                        <div activity="2" style="--progress: 23; width: 180px;" class="sc-dIvsxA activity-timer-timeline"></div>
+                                        <p class="sc-hHEhmb timer-timestamps-text">00:00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- <div id="activity" aria-live="polite" class="dpf-box discord-activity">
+                    <p id="discord-activity" class="discord-activity-status"></p>
+                    <div class="discord-activity-icon"> <!-- Width and Height should be the same as each other
+                        <img id="activity-img" src="https://cdn.discordapp.com/app-icons/1402418491272986635/166fbad351ecdd02d11a3b464748f66b.png?size=160&keep_aspect_ratio=false" alt="Activity image" style="border-radius:8px;">
+                    </div>
+                    
+                    <div id="activity-description">
+                        
+                    </div>
+
+                </div> -->
+              <!-- </div> -->
             </div>
         </section>
-        <script>
-            (async function loadDiscordProfile() {
-                const signedOut = document.getElementById('discord-signed-out');
-                const signedIn = document.getElementById('discord-signed-in');
-                const message = document.getElementById('discord-message');
-                const avatar = document.getElementById('discord-avatar');
-                const username = document.getElementById('discord-username');
-                const status = document.getElementById('discord-status');
-                const activities = document.getElementById('discord-activities');
-
-                async function requestJson(url, options) {
-                    const response = await fetch(url, options);
-                    const data = response.status === 204 ? null : await response.json();
-                    if (!response.ok) {
-                        throw new Error(data?.error || `Request failed (${response.status}).`);
-                    }
-                    return data;
-                }
-
-                async function updatePresence() {
-                    try {
-                        const presence = await requestJson('/api/presence');
-                        status.textContent = `Status: ${presence.status}`;
-                        activities.replaceChildren();
-                        if (presence.activities.length === 0) {
-                            activities.textContent = 'No current activity.';
-                            return;
-                        }
-                        for (const item of presence.activities) {
-                            const activity = document.createElement('p');
-                            activity.textContent = [item.name, item.details, item.state].filter(Boolean).join(' — ');
-                            activities.appendChild(activity);
-                        }
-                    } catch (error) {
-                        status.textContent = error.message;
-                        activities.replaceChildren();
-                    }
-                }
-
-                try {
-                    const profile = await requestJson('/api/me');
-                    signedOut.hidden = true;
-                    signedIn.hidden = false;
-                    username.textContent = profile.globalName
-                        ? `${profile.globalName} (@${profile.username})`
-                        : profile.username;
-                    if (profile.avatarUrl) {
-                        avatar.src = profile.avatarUrl;
-                        avatar.hidden = false;
-                    }
-                    await updatePresence();
-                    window.setInterval(updatePresence, 30000);
-                } catch (error) {
-                    message.textContent = error.message === 'Not signed in.'
-                        ? 'Sign in to show your Discord profile and presence.'
-                        : error.message;
-                }
-
-                document.getElementById('discord-logout').addEventListener('click', async () => {
-                    try {
-                        await requestJson('/logout', { method: 'POST' });
-                        window.location.reload();
-                    } catch (error) {
-                        status.textContent = error.message;
-                    }
-                });
-            })();
-        </script>
-    </div>
+    <!-- </div> -->
 
     <div class="bio-box">
         <!-- Hello, my name is <span style="color: #ff1a1a;">Easa</span>. Thanks for wanting to know more about me. I am a <span style="color: #ff1a1a;">16</span> year old programmer, gamer, and friend. I have been programming for about 7 or so years, with 1 year and a half experience.  -->
@@ -392,212 +139,86 @@
             <li>I love to chill to music, game, story telling, and just overall hang out to have a great time. </li>
         </ul>
 
-        <br>
-        <div class="week-badge" id="currentWeekLabel">Week ?</div>
+        <!-- <br> -->
+        
+        <div style="padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.1);"></div>
+
+        <!-- <div class="week-badge" id="currentWeekLabel">Week ?</div> -->
         "Success is not final, failure is not fatal: It is the courage to continue that counts."
         <br><br>
         
         <span style="font-size: 1.2rem; color: #ff1a1a;">— </span><span class="shimmer-text" style="font-size: 1.2rem; ">Easa</span>
     </div>
 
+    <!-- <div class="glass-container" style="display: flex; justify-content: center; align-items: center;">
+        <svg xmlns='http://www.w3.org/2000/svg' margin="" width='24' height='24' viewBox='0 0 24 24'>
+            <title>_line</title>
+            <g id="_line" fill='none'>
+                <path d='M24 0v24H0V0zM12.593 23.258l-.011.002-.071.035-.02.004-.014-.004-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01-.017.428.005.02.01.013.104.074.015.004.012-.004.104-.074.012-.016.004-.017-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113-.013.002-.185.093-.01.01-.003.011.018.43.005.012.008.007.201.093c.012.004.023 0 .029-.008l.004-.014-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014-.034.614c0 .012.007.02.017.024l.015-.002.201-.093.01-.008.004-.011.017-.43-.003-.012-.01-.01z'/>
+                <path class="redirect-icons" d=''/>
+            </g>
+        </svg>
+    </div> -->
+
+    <div class="redirect-icons-container glass-container" style="display: flex; justify-content: center; align-items: center;">
+         <svg title="Github" class="redirect-icons" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path fill="currentColor"
+                d="" />
+            <path fill="currentColor"
+                d="M6.315 6.176c-.25-.638-.24-1.367-.129-2.034a6.77 6.77 0 0 1 2.12 1.07c.28.214.647.283.989.18A9.343 9.343 0 0 1 12 5c.961 0 1.874.14 2.703.391.342.104.709.034.988-.18a6.77 6.77 0 0 1 2.119-1.07c.111.667.12 1.396-.128 2.033-.15.384-.075.826.208 1.14C18.614 8.117 19 9.04 19 10c0 2.114-1.97 4.187-5.134 4.818-.792.158-1.101 1.155-.495 1.726.389.366.629.882.629 1.456v3a1 1 0 0 0 2 0v-3c0-.57-.12-1.112-.334-1.603C18.683 15.35 21 12.993 21 10c0-1.347-.484-2.585-1.287-3.622.21-.82.191-1.646.111-2.28-.071-.568-.17-1.312-.57-1.756-.595-.659-1.58-.271-2.28-.032a9.081 9.081 0 0 0-2.125 1.045A11.432 11.432 0 0 0 12 3c-.994 0-1.953.125-2.851.356a9.08 9.08 0 0 0-2.125-1.045c-.7-.24-1.686-.628-2.281.031-.408.452-.493 1.137-.566 1.719l-.005.038c-.08.635-.098 1.462.112 2.283C3.484 7.418 3 8.654 3 10c0 2.992 2.317 5.35 5.334 6.397A3.986 3.986 0 0 0 8 17.98l-.168.034c-.717.099-1.176.01-1.488-.122-.76-.322-1.152-1.133-1.63-1.753-.298-.385-.732-.866-1.398-1.088a1 1 0 0 0-.632 1.898c.558.186.944 1.142 1.298 1.566.373.448.869.916 1.58 1.218.682.29 1.483.393 2.438.276V21a1 1 0 0 0 2 0v-3c0-.574.24-1.09.629-1.456.607-.572.297-1.568-.495-1.726C6.969 14.187 5 12.114 5 10c0-.958.385-1.881 1.108-2.684.283-.314.357-.756.207-1.14" />
+        </svg>
+
+        <svg title="Discord" class="redirect-icons" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path fill="currentColor"
+                d="M16 12.25a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0m-6.5 0a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0" />
+            <path fill="currentColor"
+                d="M9 6a1 1 0 0 0 0-2zm-.738-.864l-.25-.968zM6 6l.6.8zM3 16.5l.962-.275zm3.553 3.394a1 1 0 1 0 .894-1.788L7 19zM15.003 4a1 1 0 1 0 0 2zm3 2l.6-.8zm3 10.5l.962.275zm-4.447 1.606a1 1 0 1 0 .894 1.788L17.003 19zM9.361 6.278l-.213-.977zm5.278 0l.213-.977zm.552-.233l-.857-.515zm-6.382 0l.857-.515zM7.652 16.197l.375-.927zm-.204-1.188a1 1 0 1 0-.896 1.788L7 15.903zm10 1.788a1 1 0 1 0-.896-1.788l.448.894zm-11.944 1.46a1 1 0 0 0 1.789.894l-.895-.447zM9 5V4c-.29 0-.676.087-.988.168l.25.968l.25.968a6 6 0 0 1 .37-.084q.072-.014.109-.018Q9.03 6 9 6zm-.738.136l-.25-.968a15 15 0 0 0-1.394.44c-.412.153-.91.36-1.218.592L6 6l.6.8l.052-.031q.06-.034.161-.08c.136-.064.308-.135.503-.207c.39-.145.834-.284 1.196-.378zM6 6l-.6-.8c-.713.535-1.267 1.468-1.694 2.416c-.445.987-.822 2.147-1.113 3.294a24.5 24.5 0 0 0-.61 3.316c-.103.95-.128 1.906.055 2.549L3 16.5l.962-.275c-.067-.232-.093-.84.009-1.787c.096-.896.29-1.967.56-3.036c.272-1.071.615-2.114.998-2.964c.4-.888.784-1.423 1.071-1.638zM3 16.5l-.962.275c.09.316.286.554.423.7c.152.161.332.31.51.443c.359.267.803.535 1.241.78c.877.49 1.869.96 2.34 1.196L7 19l.447-.894c-.528-.264-1.436-.694-2.26-1.153a10 10 0 0 1-1.02-.639a2 2 0 0 1-.25-.212c-.06-.061.004-.018.045.123zM15.003 5v1c-.008 0 .104.01.374.075a12 12 0 0 1 1.63.533q.176.074.289.132c.08.04.11.062.107.06l.6-.8l.6-.8c-.232-.174-.55-.323-.823-.437a13 13 0 0 0-.968-.355a14 14 0 0 0-.964-.276c-.26-.064-.586-.132-.845-.132zm3 1l-.6.8c.287.215.67.75 1.071 1.638c.384.85.726 1.893.997 2.964s.465 2.14.561 3.036c.102.948.076 1.555.01 1.787l.961.275l.962.275c.183-.643.158-1.598.056-2.55a24.5 24.5 0 0 0-.611-3.315c-.29-1.147-.668-2.307-1.112-3.294c-.428-.948-.982-1.881-1.695-2.416zm3 10.5l-.961-.275c.04-.14.103-.184.045-.123a2 2 0 0 1-.25.212c-.255.19-.61.409-1.022.639c-.823.46-1.731.889-2.259 1.153l.447.894l.447.894c.473-.236 1.464-.706 2.34-1.195c.44-.246.884-.514 1.242-.78c.178-.134.358-.283.51-.445c.138-.145.332-.383.423-.7zM9.361 6.278l.214.977A11.4 11.4 0 0 1 12 7V5a13.4 13.4 0 0 0-2.852.301zM12 6v1c.854 0 1.67.09 2.425.255l.214-.977l.213-.977A13.4 13.4 0 0 0 12 5zm2.639.278l-.214.977a1.515 1.515 0 0 0 1.623-.694l-.857-.516l-.857-.515a.485.485 0 0 1 .518-.229zm-5.278 0l-.213-.977c.185-.04.4.034.518.23l-.857.514l-.857.516a1.51 1.51 0 0 0 1.623.694zm-.552-.233l.857-.515l-.547-.91l-.857.516l-.857.515l.547.91zm6.382 0l.857.516l.548-.91l-.857-.516l-.858-.515l-.547.91zM12.001 17v-1c-1.485 0-2.85-.274-3.974-.73l-.375.927l-.376.927c1.38.56 3.002.876 4.724.876zm-4.35-.803l.376-.927a8 8 0 0 1-.579-.261L7 15.903l-.448.894q.35.175.724.327zm9.35-.294l-.449-.894q-.277.139-.58.261l.377.927l.375.927q.374-.152.724-.327zm-.652.294l-.376-.927c-1.124.456-2.489.73-3.973.73v2c1.723 0 3.345-.317 4.724-.876zm-9.95 2.507l.894.447l1.253-2.507l-.894-.447l-.895-.447l-1.253 2.506zm11.203 0l.895-.446l-1.254-2.508l-.894.447l-.895.447l1.254 2.508zM16 12.25h-1a.25.25 0 0 1 .25-.25v2A1.75 1.75 0 0 0 17 12.25zm-.75.75v-1a.25.25 0 0 1 .25.25h-2c0 .966.784 1.75 1.75 1.75zm-.75-.75h1a.25.25 0 0 1-.25.25v-2a1.75 1.75 0 0 0-1.75 1.75zm.75-.75v1a.25.25 0 0 1-.25-.25h2a1.75 1.75 0 0 0-1.75-1.75zm-5.75.75h-1a.25.25 0 0 1 .25-.25v2a1.75 1.75 0 0 0 1.75-1.75zm-.75.75v-1a.25.25 0 0 1 .25.25H7c0 .966.784 1.75 1.75 1.75zM8 12.25h1a.25.25 0 0 1-.25.25v-2A1.75 1.75 0 0 0 7 12.25zm.75-.75v1a.25.25 0 0 1-.25-.25h2a1.75 1.75 0 0 0-1.75-1.75z" />
+        </svg>
+
+        <svg title="Youtube" class="redirect-icons" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path fill="currentColor"
+                d="" />
+            <path fill="currentColor"
+                d="M12 4c.855 0 1.732.022 2.582.058l1.004.048.961.057.9.061.822.064a3.802 3.802 0 0 1 3.494 3.423l.04.425.075.91c.07.943.122 1.971.122 2.954 0 .983-.052 2.011-.122 2.954l-.075.91c-.013.146-.026.287-.04.425a3.802 3.802 0 0 1-3.495 3.423l-.82.063-.9.062-.962.057-1.004.048A61.59 61.59 0 0 1 12 20a61.59 61.59 0 0 1-2.582-.058l-1.004-.048-.961-.057-.9-.062-.822-.063a3.802 3.802 0 0 1-3.494-3.423l-.04-.425-.075-.91A40.662 40.662 0 0 1 2 12c0-.983.052-2.011.122-2.954l.075-.91c.013-.146.026-.287.04-.425A3.802 3.802 0 0 1 5.73 4.288l.821-.064.9-.061.962-.057 1.004-.048A61.676 61.676 0 0 1 12 4m0 2c-.825 0-1.674.022-2.5.056l-.978.047-.939.055-.882.06-.808.063a1.802 1.802 0 0 0-1.666 1.623C4.11 9.113 4 10.618 4 12c0 1.382.11 2.887.227 4.096.085.872.777 1.55 1.666 1.623l.808.062.882.06.939.056.978.047c.826.034 1.675.056 2.5.056s1.674-.022 2.5-.056l.978-.047.939-.055.882-.06.808-.063a1.802 1.802 0 0 0 1.666-1.623C19.89 14.887 20 13.382 20 12c0-1.382-.11-2.887-.227-4.096a1.802 1.802 0 0 0-1.666-1.623l-.808-.062-.882-.06-.939-.056-.978-.047A60.693 60.693 0 0 0 12 6m-2 3.575a.6.6 0 0 1 .819-.559l.081.04 4.2 2.424a.6.6 0 0 1 .085.98l-.085.06-4.2 2.425a.6.6 0 0 1-.894-.43l-.006-.09z" />
+        </svg>
+
+        <svg title="Twitter" class="redirect-icons" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+            <path d="M0 0h24v24h0z" fill="none" />
+            <path fill="currentColor"
+                d="" />
+            <path fill="currentColor"
+                d="M19.753 4.659a1 1 0 0 0-1.506-1.317l-5.11 5.84L8.8 3.4A1 1 0 0 0 8 3H4a1 1 0 0 0-.8 1.6l6.437 8.582-5.39 6.16a1 1 0 0 0 1.506 1.317l5.11-5.841L15.2 20.6a1 1 0 0 0 .8.4h4a1 1 0 0 0 .8-1.6l-6.437-8.582 5.39-6.16ZM16.5 19 6 5h1.5L18 19z" />
+        </svg>
+
+        <svg title="Twitch" class="redirect-icons" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path fill="currentColor"
+                d="" />
+            <path fill="currentColor"
+                d="M20 2a1 1 0 0 1 1 1v9a1 1 0 0 1-.2.6l-3 4q-.078.101-.176.18l-2.499 2.001A1 1 0 0 1 14.5 19h-3.086l-2.707 2.707A1 1 0 0 1 7 21v-2H4a1 1 0 0 1-1-1V6l.005-.099a1 1 0 0 1 .288-.608l3-3A1 1 0 0 1 7 2zM6 5.414l-1 1V17h2a1 1 0 0 1-1-1zM19 4H8v11h2a1 1 0 0 1 1 1v.364l1.36-1.133c.18-.15.406-.231.64-.231h3.501L19 11.667zm-7 2.5a1 1 0 0 1 1 1V11a1 1 0 1 1-2 0V7.5a1 1 0 0 1 1-1m4 0a1 1 0 0 1 1 1V11a1 1 0 1 1-2 0V7.5a1 1 0 0 1 1-1" />
+        </svg>        
+    </div>
+
+
+<!-- M6.315 6.176c-.25-.638-.24-1.367-.129-2.034a6.77 6.77 0 0 1 2.12 1.07c.28.214.647.283.989.18A9.343 9.343 0 0 1 12 5c.961 0 1.874.14 2.703.391.342.104.709.034.988-.18a6.77 6.77 0 0 1 2.119-1.07c.111.667.12 1.396-.128 2.033-.15.384-.075.826.208 1.14C18.614 8.117 19 9.04 19 10c0 2.114-1.97 4.187-5.134 4.818-.792.158-1.101 1.155-.495 1.726.389.366.629.882.629 1.456v3a1 1 0 0 0 2 0v-3c0-.57-.12-1.112-.334-1.603C18.683 15.35 21 12.993 21 10c0-1.347-.484-2.585-1.287-3.622.21-.82.191-1.646.111-2.28-.071-.568-.17-1.312-.57-1.756-.595-.659-1.58-.271-2.28-.032a9.081 9.081 0 0 0-2.125 1.045A11.432 11.432 0 0 0 12 3c-.994 0-1.953.125-2.851.356a9.08 9.08 0 0 0-2.125-1.045c-.7-.24-1.686-.628-2.281.031-.408.452-.493 1.137-.566 1.719l-.005.038c-.08.635-.098 1.462.112 2.283C3.484 7.418 3 8.654 3 10c0 2.992 2.317 5.35 5.334 6.397A3.986 3.986 0 0 0 8 17.98l-.168.034c-.717.099-1.176.01-1.488-.122-.76-.322-1.152-1.133-1.63-1.753-.298-.385-.732-.866-1.398-1.088a1 1 0 0 0-.632 1.898c.558.186.944 1.142 1.298 1.566.373.448.869.916 1.58 1.218.682.29 1.483.393 2.438.276V21a1 1 0 0 0 2 0v-3c0-.574.24-1.09.629-1.456.607-.572.297-1.568-.495-1.726C6.969 14.187 5 12.114 5 10c0-.958.385-1.881 1.108-2.684.283-.314.357-.756.207-1.14 -->
+
+<!-- M12 4c.855 0 1.732.022 2.582.058l1.004.048.961.057.9.061.822.064a3.802 3.802 0 0 1 3.494 3.423l.04.425.075.91c.07.943.122 1.971.122 2.954 0 .983-.052 2.011-.122 2.954l-.075.91c-.013.146-.026.287-.04.425a3.802 3.802 0 0 1-3.495 3.423l-.82.063-.9.062-.962.057-1.004.048A61.59 61.59 0 0 1 12 20a61.59 61.59 0 0 1-2.582-.058l-1.004-.048-.961-.057-.9-.062-.822-.063a3.802 3.802 0 0 1-3.494-3.423l-.04-.425-.075-.91A40.662 40.662 0 0 1 2 12c0-.983.052-2.011.122-2.954l.075-.91c.013-.146.026-.287.04-.425A3.802 3.802 0 0 1 5.73 4.288l.821-.064.9-.061.962-.057 1.004-.048A61.676 61.676 0 0 1 12 4m0 2c-.825 0-1.674.022-2.5.056l-.978.047-.939.055-.882.06-.808.063a1.802 1.802 0 0 0-1.666 1.623C4.11 9.113 4 10.618 4 12c0 1.382.11 2.887.227 4.096.085.872.777 1.55 1.666 1.623l.808.062.882.06.939.056.978.047c.826.034 1.675.056 2.5.056s1.674-.022 2.5-.056l.978-.047.939-.055.882-.06.808-.063a1.802 1.802 0 0 0 1.666-1.623C19.89 14.887 20 13.382 20 12c0-1.382-.11-2.887-.227-4.096a1.802 1.802 0 0 0-1.666-1.623l-.808-.062-.882-.06-.939-.056-.978-.047A60.693 60.693 0 0 0 12 6m-2 3.575a.6.6 0 0 1 .819-.559l.081.04 4.2 2.424a.6.6 0 0 1 .085.98l-.085.06-4.2 2.425a.6.6 0 0 1-.894-.43l-.006-.09z -->
+
+<!-- M20 2a1 1 0 0 1 1 1v9a1 1 0 0 1-.2.6l-3 4q-.078.101-.176.18l-2.499 2.001A1 1 0 0 1 14.5 19h-3.086l-2.707 2.707A1 1 0 0 1 7 21v-2H4a1 1 0 0 1-1-1V6l.005-.099a1 1 0 0 1 .288-.608l3-3A1 1 0 0 1 7 2zM6 5.414l-1 1V17h2a1 1 0 0 1-1-1zM19 4H8v11h2a1 1 0 0 1 1 1v.364l1.36-1.133c.18-.15.406-.231.64-.231h3.501L19 11.667zm-7 2.5a1 1 0 0 1 1 1V11a1 1 0 1 1-2 0V7.5a1 1 0 0 1 1-1m4 0a1 1 0 0 1 1 1V11a1 1 0 1 1-2 0V7.5a1 1 0 0 1 1-1 -->
+
     <!-- <div class="section-title">Previous Quotes</div>
 
     <div class="previous-list" id="previousQuotes">
-        <!-- Previous quotes will be loaded here from /PreviousQuotes/*.json -->
-    </div>
+        Previous quotes will be loaded here from /PreviousQuotes/*.json
+    </div> -->
 
-    <script>
-        (function loadPreviousQuotes() {
-            const container = document.getElementById('previousQuotes');
+    
 
-            function makeItem(quote, author, week, monthYear, index) {
-                const div = document.createElement('div');
-                div.className = 'quote-item';
-
-                const badge = document.createElement('div');
-                badge.className = 'week-badge';
-                badge.style.float = 'right';
-                badge.textContent = `Week ${week} - ${monthYear}`;
-
-                const text = document.createElement('div');
-                text.innerHTML = `${quote} <br><br> <span style=\"font-size: 1.0rem; color: #ff1a1a;\">— ${author}</span>`;
-
-                div.appendChild(badge);
-                div.appendChild(text);
-
-                // Staggered fade-in: delay increases down the list
-                div.style.animationDelay = `${index * 0.14}s`;
-                return div;
-            }
-
-            // ISO week helpers
-            function getISOWeek(date) {
-                const tmp = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-                // Thursday in current week decides the year.
-                tmp.setUTCDate(tmp.getUTCDate() + 4 - (tmp.getUTCDay()||7));
-                const yearStart = new Date(Date.UTC(tmp.getUTCFullYear(),0,1));
-                const weekNo = Math.ceil((((tmp - yearStart) / 86400000) + 1)/7);
-                return { year: tmp.getUTCFullYear(), week: weekNo };
-            }
-
-            function dateOfISOWeek(isoWeek, isoYear) {
-                const simple = new Date(Date.UTC(isoYear, 0, 1 + (isoWeek - 1) * 7));
-                const dow = simple.getUTCDay();
-                let ISOweekStart = new Date(simple);
-                if (dow <= 4) ISOweekStart.setUTCDate(simple.getUTCDate() - simple.getUTCDay() + 1);
-                else ISOweekStart.setUTCDate(simple.getUTCDate() + 8 - simple.getUTCDay());
-                return ISOweekStart; // Monday of that ISO week
-            }
-
-            function pad(n){ return n < 10 ? '0'+n : ''+n; }
-
-            function formatMMYY(date) {
-                const m = date.getUTCMonth() + 1; // 1-12
-                const y = date.getUTCFullYear() % 100; // two-digit year
-                return `${pad(m)}/${pad(y)}`;
-            }
-
-            // Strategy: try to fetch files named Week1.json, Week2.json, ...
-            // Stop after 12 consecutive misses to avoid excessive requests.
-            const maxTry = 200;
-            let consecutiveMisses = 0;
-            const maxConsecutiveMisses = 12;
-
-            let foundAny = false;
-
-            // Kick off sequential fetches to allow early termination on consecutive misses.
-            (async () => {
-                const found = [];
-                let currentObj = null;
-
-                // First, try to fetch a Week*.json file from the root (current week)
-                for (let i = 1; i <= 200; i++) {
-                    const path = `Week${i}.json`;
-                    try {
-                        const res = await fetch(path);
-                        if (res.ok) {
-                            const data = await res.json();
-                            const quoteText = data.Quote || data.quote || '';
-                            const author = data.Author || data.author || '';
-                            currentObj = { week: i, quote: quoteText, author };
-                            break; // Use the first one found as current
-                        }
-                    } catch (err) {
-                        // Continue searching
-                    }
-                }
-
-                // Then, fetch files from PreviousQuotes/ folder
-                for (let i = 1; i <= maxTry; i++) {
-                    const path = `PreviousQuotes/Week${i}.json`;
-                    try {
-                        const res = await fetch(path);
-                        if (!res.ok) {
-                            consecutiveMisses++;
-                            if (consecutiveMisses >= maxConsecutiveMisses) break;
-                            continue;
-                        }
-
-                        consecutiveMisses = 0;
-                        foundAny = true;
-                        const data = await res.json();
-                        const quoteText = data.Quote || data.quote || '';
-                        const author = data.Author || data.author || '';
-                        found.push({ week: i, quote: quoteText, author });
-                    } catch (err) {
-                        consecutiveMisses++;
-                        if (consecutiveMisses >= maxConsecutiveMisses) break;
-                        continue;
-                    }
-                }
-
-                if (!currentObj && !foundAny) {
-                    const note = document.createElement('div');
-                    note.className = 'quote-item';
-                    note.textContent = 'No previous quotes found in the PreviousQuotes folder.';
-                    container.appendChild(note);
-                    return;
-                }
-
-                // If no root-level file found, use the smallest from PreviousQuotes/ as current
-                if (!currentObj && found.length > 0) {
-                    const weeks = found.map(f => f.week);
-                    const minWeek = Math.min(...weeks);
-                    const currentIndex = found.findIndex(f => f.week === minWeek);
-                    if (currentIndex >= 0) {
-                        currentObj = found.splice(currentIndex, 1)[0];
-                    }
-                }
-
-                // Sort remaining previous weeks by week descending (newest-first)
-                found.sort((a, b) => b.week - a.week);
-
-                // currentWeek is the week number from the first (smallest) file
-                const currentWeek = currentObj ? currentObj.week : (found.length ? found[0].week + 1 : 1);
-                const currentLabel = document.getElementById('currentWeekLabel');
-
-                // Compute current ISO week/year from today's date
-                const today = new Date();
-                const currentISO = getISOWeek(today);
-
-                // get Monday of current ISO week
-                const currentISOWeekStart = dateOfISOWeek(currentISO.week, currentISO.year);
-                if (currentLabel) currentLabel.textContent = `Week ${currentWeek} - ${formatMMYY(currentISOWeekStart)}`;
-
-                // If we found a currentObj, populate the main quote box with its content
-                const mainBox = document.getElementById('quoteOfWeek');
-                if (!currentObj && mainBox) {
-                    mainBox.innerHTML =
-                        `<div class="week-badge" id="currentWeekLabel">Week ${currentWeek} - ${formatMMYY(currentISOWeekStart)}</div>` +
-                        `<div class="main-week-number">Week ${currentWeek}</div>` +
-                        `<div class="main-quote-text">${currentObj.quote}</div>` +
-                        `<br><span style="font-size: 1.2rem; color: #ff1a1a;">— ${currentObj.author}</span>`;
-                }
-
-                // Update Open Graph meta tags for link previews
-                if (currentObj) {
-                    document.querySelector('meta[property="og:title"]').setAttribute('content', `Week ${currentWeek} - Easa's Full Bio`);
-                    document.querySelector('meta[property="og:description"]').setAttribute('content', `"${currentObj.quote}" — ${currentObj.author}`);
-                    document.querySelector('meta[property="twitter:title"]').setAttribute('content', `Week ${currentWeek} - Easa's Full Bio`);
-                    document.querySelector('meta[property="twitter:description"]').setAttribute('content', `"${currentObj.quote}" — ${currentObj.author}`);
-                }
-
-                // Animate container height as items are added, and auto-scroll if at bottom
-                let prevHeight = container.offsetHeight;
-                let atBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 2);
-
-                for (let i = 0; i < found.length; i++) {
-                    const item = found[i];
-
-                    // Compute month/year label for this item by subtracting weeks from current ISO week
-                    const offsetWeeks = currentWeek - item.week; // how many weeks before current
-                    const itemDate = new Date(currentISOWeekStart);
-                    itemDate.setUTCDate(itemDate.getUTCDate() - offsetWeeks * 7);
-                    const monthYear = formatMMYY(itemDate);
-
-                    // Before adding, measure height
-                    prevHeight = container.offsetHeight;
-                    const el = makeItem(item.quote, item.author, item.week, monthYear, i);
-                    container.appendChild(el);
-
-                    // After adding, animate container height
-                    const newHeight = container.offsetHeight;
-                    container.style.minHeight = prevHeight + 'px';
-                    container.style.maxHeight = newHeight + 'px';
-                    // Force reflow for transition
-                    void container.offsetWidth;
-                    container.style.minHeight = '';
-                    container.style.maxHeight = '';
-
-                    // If user was at bottom, scroll to bottom after each add
-                    if (atBottom) {
-                        setTimeout(() => {
-                            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                        }, (i+1) * 140 + 150); // after fade-in
-                    }
-                }
-            })();
-        })();
-    </script>
 </body>
+
+<script src="lanyard-api.js"></script>
+
 </html>

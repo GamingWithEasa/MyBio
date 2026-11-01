@@ -1,0 +1,592 @@
+:root {
+    --accent-red: #ff1a1a;
+    --dark-red: #8b0000;
+    --bg-card: rgba(17, 17, 17, 0.85);
+    --border-glow: rgba(255, 26, 26, 0.4);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; */
+    /* Updated background to animated gradient */
+    /* background: #000000; */
+    background: #050505;
+    
+    /* background-image: radial-gradient(circle at 50% 0%, #1a0505 0%, #050505 75%); */
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #ffffff;
+    min-height: 100vh;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+/* Added background animation keyframes */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+header {
+    background: linear-gradient(90deg, #8b0000, #ff1a1a);
+    padding: 20px;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: white;
+    /* Added header entrance animation */
+    animation: slideDown 1s ease-out;
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Added shimmer effect to header */
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 3s infinite;
+}
+
+.shimmer-text {
+    /* Define variables with default fallback colors */
+    --base-color: var(--shimmer-base, #8b0000);
+    /* --mid-color: var(--shimmer-mid, #ff1a1a); */
+    --glow-color: var(--shimmer-glow, #FFFAFA);
+
+    /* Construct the gradient using those variables */
+    background: linear-gradient(55deg,
+            var(--base-color) 25%,
+            var(--glow-color) 50%,
+            var(--base-color) 100%
+            /* var(--base-color) 0%, 
+                var(--mid-color) 40%, 
+                var(--glow-color) 50%, 
+                var(--mid-color) 60%, 
+                var(--base-color) 100% */
+        );
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: textShimmer 4s infinite;
+}
+
+@keyframes textShimmer {
+    0% {
+        background-position: 155% center;
+    }
+
+    100% {
+        background-position: -245% center;
+    }
+}
+
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.header3 {
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.glass-container {
+    margin: auto;
+    /* text-align: center; */
+    align-items: center;
+    color: white;
+
+    display: inline-block;
+    padding: 5px 10px;
+    /* padding-inline: 5; */
+
+    width: max-content;
+    /* height: 5%; */
+    gap: 10px;
+
+    background: rgba(100, 100, 100, 0.2);
+    border-radius: 32px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Card Base Styles */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glow);
+    border-left: 5px solid var(--accent-red);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+    animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pfp-box {
+    margin: 40px auto;
+    background: rgba(17, 17, 17, 0.9);
+    /* border-left: 6px solid #ff1a1a;
+            border-right: 6px solid #8b0000; */
+    /* padding: 25px; */
+    width: 25%;
+    /* line-height: 1.8rem; */
+    box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
+    border-radius: 100000px;
+    /* Added entrance animation for profile picture */
+    animation: fadeInScale 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    backdrop-filter: blur(5px);
+}
+
+.dpf-box {
+    margin: 50px auto;
+    /* background: rgba(17, 17, 17, 0.9); */
+    /* border-left: 6px solid #ff1a1a;
+            border-right: 6px solid #8b0000; */
+    /* padding: 25px; */
+    width: 70% auto;
+    border-radius: 10px;
+    /* line-height: 1.8rem; */
+    box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
+    /* border-radius: 100000px; */
+    /* Added entrance animation for profile picture */
+    animation: fadeInScale 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    backdrop-filter: blur(5px);
+}
+
+.discord-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar-container {
+    position: relative;
+    /* Crucial: anchors the absolute child inside */
+    display: inline-block;
+    /* Makes the wrapper shrink-wrap the avatar image */
+    line-height: 0;
+    /* Prevents unwanted spacing under the image */
+}
+
+.status-text-box {
+    /* position: absolute;
+    bottom: 65px;
+    left: 100px;
+
+    width: max-content;
+    max-width: 200px;
+    height: auto;
+    min-height: 45px;
+    max-height: 166px;
+    border-radius: 22px;
+
+    border: 2.5px solid #323232;
+    background-color: #252525;
+
+    display: flex;
+    align-items: center;
+    box-sizing: border-box; */
+
+    /* --------- */
+
+    background: rgba(35, 35, 35, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    color: #dddddd;
+    margin-top: 5px;
+}
+
+.status-dot {
+    position: absolute;
+    bottom: 0px;
+    /* Distance from the bottom of the avatar */
+    right: 0px;
+    /* Distance from the right of the avatar */
+    width: 22px;
+    /* Adjusted size proportioned to a 96px avatar */
+    height: 22px;
+    border-radius: 50%;
+
+    border: 4.5px solid #111111;
+    /* Matches your card's background color for that cutout effect */
+    z-index: 4;
+}
+
+.status-dot-activity {
+    position: absolute;
+    bottom: -7.5px;
+    /* Distance from the bottom of the avatar */
+    right: -7.5px;
+    /* Distance from the right of the avatar */
+    width: 40px;
+    /* Adjusted size proportioned to a 96px avatar */
+    height: 40px;
+    border-radius: 50%;
+
+    /* background-color: #111111; */
+    /* border: 5.75px solid #111111; */
+    /* Matches your card's background color for that cutout effect */
+    z-index: 4;
+}
+
+img.status-dot-activity {
+  width: 40px !important;
+  height: 40px !important;
+  object-fit: cover; /* Ensures the image scales nicely if it isn't square */
+}
+
+.online {
+    background-color: #55d860;
+    /* Will be dynamically changed by your JS */
+}
+
+.idle {
+    background-color: #f0b132;
+    /* Will be dynamically changed by your JS */
+    fill: #f0b232;
+}
+
+.dnd {
+    background-color: #d85555;
+    /* Will be dynamically changed by your JS */
+}
+
+.offline {
+    /* background-color: #80848e; */
+    stroke: #80848e;
+}
+
+.discord-activity {
+    /* width: min(70%, 560px); */
+    /* margin: 40px auto; */
+    /* padding: 24px;
+    box-sizing: border-box;
+    text-align: center; */
+    background: rgba(17, 17, 17, .9);
+    border: 1px solid rgba(255, 26, 26, .55);
+    /* display: flex;
+    align-items: center;
+    gap: 20px; */
+}
+
+.discord-activity-status {
+    margin-left: 3%;
+    text-align: left; 
+    font-size: 0.75rem;
+}
+
+.discord-activity-timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 5px;
+}
+
+.activity-timer-timeline {
+    width: calc(var(--progress) * 1%);
+    height: 3px;
+    border-radius: 5px;
+    background-color: #1DB954;
+}
+
+.activity-timer-timestamps {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.timer-timestamps-text {
+  /* font-size: 0.75rem; */
+  /* margin: 0 5px; */
+  color: #a0a0a0;
+  font-weight: normal;
+}
+
+.discord-activity-icon {
+    /* background-color: rgba(35, 35, 35, 0.8); */
+    /* border-radius: 10px; */
+    width: 100px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    min-height: 0;
+    /* overflow: hidden; */
+    margin: 10px;
+    margin-bottom: 15px;
+
+    position: relative;
+    /* Crucial: anchors the absolute child inside */
+    line-height: 0;
+    /* Prevents unwanted spacing under the image */
+}
+
+.discord-activity-icon img {
+    background-color: rgba(35, 35, 35, 0.8);
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* .discord-activity-description {
+    
+} */
+
+.redirect-icons-container {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    margin-top: 10px;
+    /* width: 10% */
+}
+
+.redirect-icons {
+    /* width: 15%; */
+    font-size: 2.5rem;
+    color: #a0a0a0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.redirect-icons:hover {
+    color: var(--accent-red);
+    transform: scale(1.1);
+}
+
+.bio-box {
+    margin: 80px auto;
+    background: rgba(17, 17, 17, 0.9);
+    border-left: 6px solid #ff1a1a;
+    border-right: 6px solid #8b0000;
+    padding: 25px;
+    width: 70%;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
+    border-radius: 10px;
+    /* Added entrance animation for bio */
+    animation: fadeInScale 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    backdrop-filter: blur(5px);
+}
+
+.quote-box {
+    margin: 40px auto;
+    background: rgba(17, 17, 17, 0.9);
+    border-left: 6px solid #ff1a1a;
+    border-right: 6px solid #8b0000;
+    padding: 25px;
+    width: 70%;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
+    border-radius: 10px;
+    /* Added entrance animation for main quote */
+    animation: fadeInScale 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    backdrop-filter: blur(5px);
+}
+
+.main-week-number {
+    font-size: 2.2rem;
+    color: #ff1a1a;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.main-quote-text {
+    font-size: 1.6rem;
+    color: #ffffff;
+    margin-top: 6px;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.week-badge {
+    float: right;
+    background: linear-gradient(90deg, #8b0000, #ff1a1a);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    /* Added pulse animation to badge */
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 26, 26, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 26, 26, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 26, 26, 0);
+    }
+}
+
+/* Fade-in animation for list items */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quote-item {
+    background: rgba(22, 22, 22, 0.8);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 4px solid #8b0000;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-radius: 6px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation-name: fadeInUp;
+    animation-duration: 800ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.16, .84, .24, 1);
+    /* Added border for better contrast */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #8b0000;
+}
+
+.quote-item:hover {
+    background: #1d1d1d;
+    transform: scale(1.02) translateX(5px);
+    box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.5);
+    border-left-color: #ff1a1a;
+}
+
+.section-title {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 2rem;
+    color: #ff1a1a;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+    /* Added tracking-in animation */
+    animation: trackingIn 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation-delay: 0.5s;
+}
+
+@keyframes trackingIn {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.previous-list {
+    margin: 20px auto;
+    width: 70%;
+    padding: 10px;
+    overflow: hidden;
+    transition: max-height 0.7s cubic-bezier(.2, .9, .2, 1), min-height 0.7s cubic-bezier(.2, .9, .2, 1);
+    max-height: 5000px;
+    /* Large enough for many quotes */
+}
+
+footer {
+    margin-top: 60px;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #777;
+    /* Added fade in for footer */
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
