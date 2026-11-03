@@ -1,3 +1,10 @@
+// Keep track of the current activity timestamps globally for live client-side updates
+let activeTimestamps = null;
+let activityTimerId = null;
+
+const ts_start = document.getElementById('ts-start');
+const ts_end = document.getElementById('ts-end');
+
 async function loadDiscordCard() {
   const USER_ID = '580864877497679892';
   const API_URL = `https://api.lanyard.rest/v1/users/${USER_ID}`;
@@ -84,9 +91,10 @@ async function loadDiscordCard() {
           + " " + mainActivity.name;
 
         document.getElementById('activity-stats-title').innerText = mainActivity.details
-        document.getElementById('activity-stats-description').innerText = mainActivity.assets?.large_text
+        document.getElementById('activity-stats-description').innerHTML = mainActivity.state + `<br>` + mainActivity.assets?.large_text
 
         const assets = mainActivity.assets;
+        activeTimestamps = mainActivity.timestamps; // Save timestamps for the live interval ticker
         const activityImage = document.getElementById('activity-img');
         const activityImageSmall = document.getElementById('activity-status-indicator')
         
@@ -117,8 +125,13 @@ async function loadDiscordCard() {
 
         activityImageSmall.style.display = smallImageUrl ? 'block' : 'none';
         activityImageSmall.src = smallImageUrl || '';
+
+        updateTimestampUI()
     } else {
+      activeTimestamps = null;
       document.getElementById('discord-activity').innerText = '';
+      ts_start.innerText = '';
+      ts_end.innerText = '';
       const activityImage = document.getElementById('activity-img');
       activityImage.removeAttribute('src');
       activityImage.style.display = 'none';
@@ -129,6 +142,62 @@ async function loadDiscordCard() {
   }
 }
 
+
+// Formats standard duration in seconds into MM:SS or HH:MM:SS
+function formatDuration(seconds) {
+  if (isNaN(seconds) || seconds < 0) return "00:00";
+  
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = Math.floor(seconds % 60);
+
+  const paddedMinutes = String(minutes).padStart(2, '0');
+  const paddedSeconds = String(remainingSeconds).padStart(2, '0');
+
+  if (hours > 0) {
+    return `${hours}:${paddedMinutes}:${paddedSeconds}`;
+  }
+  return `${paddedMinutes}:${paddedSeconds}`;
+}
+
+// Computes current state relative to the live server clock time
+function updateTimestampUI() {
+  if (!ts_end || !ts_start) return;
+
+  if (!activeTimestamps) {
+    ts_start.innerText = '';
+    ts_end.innerText = '';
+    return;
+  }
+
+  const now = Date.now(); // Current local time in milliseconds
+
+  // Scenario A: Music / Media progress bar track (End timestamp provided)
+  if (activeTimestamps.end) {
+    const totalSeconds = Math.max(0, (activeTimestamps.end - activeTimestamps.start) / 1000);
+    const currentSeconds = Math.min(totalSeconds, Math.max(0, (now - activeTimestamps.start) / 1000));
+    
+    ts_start.innerText = formatDuration(currentSeconds);
+    ts_end.innerText = formatDuration(totalSeconds);
+  } 
+  // Scenario B: Game duration counter (Only Start timestamp provided -> "elapsed")
+  else if (activeTimestamps.start) {
+    const elapsedSeconds = Math.max(0, (now - activeTimestamps.start) / 1000);
+    ts_start.innerText = `${formatDuration(elapsedSeconds)} elapsed`;
+    ts_end.innerText = '';
+  } 
+  else {
+    ts_start.innerText = '';
+    ts_end.innerText = '';
+  }
+}
+
+
 // Initial fetch and auto-refresh every 30 seconds
 loadDiscordCard();
-setInterval(loadDiscordCard, 5000);
+setInterval(loadDiscordCard, 1000); 
+// 30000
+
+// Increment counter positions on the client side every 1 second for a live-ticking UI
+// setInterval(updateTimestampUI, 1000);
+// 1000
