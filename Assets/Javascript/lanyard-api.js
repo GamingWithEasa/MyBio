@@ -5,6 +5,12 @@ let activityTimerId = null;
 const ts_start = document.getElementById('ts-start');
 const ts_end = document.getElementById('ts-end');
 
+function wait(milliseconds){
+  return new Promise(resolve => {
+      setTimeout(resolve, milliseconds);
+  });
+}
+
 async function loadDiscordCard() {
   const USER_ID = '580864877497679892';
   const API_URL = `https://api.lanyard.rest/v1/users/${USER_ID}`;
@@ -141,7 +147,6 @@ async function loadDiscordCard() {
     console.error('Error fetching Lanyard data:', error);
   }
 }
-
 
 // Formats standard duration in seconds into MM:SS or HH:MM:SS
 function formatDuration(seconds) {

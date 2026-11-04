@@ -17,7 +17,7 @@ body {
     /* background: #000000; */
     background: #050505;
     
-    /* background-image: radial-gradient(circle at 50% 0%, #1a0505 0%, #050505 75%); */
+    background-image: radial-gradient(circle at 50% 0%, #1a0505 0%, #050505 75%);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     color: #ffffff;
@@ -53,7 +53,7 @@ header {
     text-transform: uppercase;
     color: white;
     /* Added header entrance animation */
-    animation: slideDown 1s ease-out;
+    animation: slideDown 0.85s ease-out;
     box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
@@ -109,15 +109,60 @@ header::after {
 
 
 @keyframes slideDown {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
+    from { 
+        opacity: 0; transform: translateY(-20px); 
     }
+    
+    to { 
+        opacity: 1; transform: translateY(0); 
+    }
+}
 
-    to {
-        transform: translateY(0);
-        opacity: 1;
+@keyframes slideDowni {
+    from { 
+        opacity: 0; transform: translateY(-20px) translateX(-175px);
     }
+    
+    to { 
+        opacity: 1; transform: translateY(0) translateX(-175px);
+    }
+}
+
+@keyframes slideRight {
+    from { 
+        opacity: 0; transform: translateX(-175px); 
+    }
+    
+    to { 
+        opacity: 1; transform: translateX(0); 
+    }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+    }
+    
+    to { 
+        opacity: 1; 
+    }
+}
+
+@keyframes fadeOut {
+    from { 
+        opacity: 1; 
+    }
+    
+    to { 
+        opacity: 0; 
+    }
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 @keyframes shimmer {
@@ -137,8 +182,116 @@ header::after {
     font-weight: 700;
 }
 
+.box {
+    padding: 24px;
+    border: 1px solid rgba(255, 26, 26, 0.32);
+    border-radius: 10px;
+    background: var(--bg-card);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.3);
+
+    margin: 50px auto;
+    /* background: rgba(17, 17, 17, 0.9); */
+    /* border-left: 6px solid #ff1a1a;
+            border-right: 6px solid #8b0000; */
+    /* padding: 25px; */
+    width: 70%;
+
+    /* line-height: 1.8rem; */
+    box-shadow: 0 0 36px rgba(255, 0, 0, 0.3);
+    /* border-radius: 100000px; */
+    /* Added entrance animation for profile picture */
+    animation: fadeInScale 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    backdrop-filter: blur(5px);
+}
+
+.scene {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0; /* Shortcut for top: 0; right: 0; bottom: 0; left: 0; */
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999; /* Keeps it on top of other content */
+    background-color: rgba(0, 0, 0, 1); /* Optional: semi-transparent backdrop */
+}
+
+.intro-scene {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0; /* Shortcut for top: 0; right: 0; bottom: 0; left: 0; */
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999; /* Keeps it on top of other content */
+    background-color: rgba(0, 0, 0, 1); /* Optional: semi-transparent backdrop */
+    
+}
+
+.transition-scene {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0; /* Shortcut for top: 0; right: 0; bottom: 0; left: 0; */
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999; /* Keeps it on top of other content */
+    background-color: rgba(0, 0, 0, 1); /* Optional: semi-transparent backdrop */
+    
+}
+
+.anim-fadeOut {
+    animation: fadeOut 1s ease forwards; /* Fades out the scene */
+    animation-delay: 3.5s; /* Starts fading out after 2 seconds */
+}
+
+.anim-intro {
+    animation:
+        slideDowni 1.85s ease-out forwards,
+        slideRight 1.85s ease-out 0.85s forwards,
+        reveal 0.85s ease-out 0.85s forwards;
+}
+
+.anim-transition {
+    animation:
+        slideDowni 1.85s ease-out forwards,
+        slideRight 1.85s ease-out 0.85s forwards,
+        reveal 0.85s ease-out 0.85s forwards,
+        fadeOut 5s ease forwards;
+}
+
+
+.site-navigation {
+    display: flex;
+    justify-content: center;
+    padding: 18px 16px 0;
+    animation: slideDown 0.7s ease-out;
+    transition: transform 320ms ease;
+}
+
+.site-navigation a {
+    padding: 10px 18px;
+    /* border: 1px solid rgba(255, 26, 26, 0.55); */
+    /* border-radius: 999px; */
+    /* background: rgba(17, 17, 17, 0.85); */
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.site-navigation a:hover,
+.site-navigation a:focus-visible {
+    border-color: var(--accent-red);
+    background: rgba(139, 0, 0, 0.75);
+    transform: scale(1.05);
+}
+
 .glass-container {
-    margin: auto;
+    margin: 30px auto;
     /* text-align: center; */
     align-items: center;
     color: white;
@@ -157,6 +310,19 @@ header::after {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-link {
+    margin: 30px 10px;
+    display: inline-block;
+    /* color: #ff7777; */
+    text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: #fff;
+    /* text-decoration: underline; */
 }
 
 /* Card Base Styles */
@@ -270,6 +436,8 @@ header::after {
 }
 
 .status-dot-activity {
+    /* background-size: 35%; */
+    /* background-clip:padding-box; */
     position: absolute;
     bottom: -7.5px;
     /* Distance from the bottom of the avatar */
@@ -334,25 +502,33 @@ img.status-dot-activity {
 
 .discord-activity-timer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0 5px;
+    justify-content: space-between;
+    /* padding: 0 5px; */
+    padding-right: 15px;
 }
 
 .activity-timer-timeline {
+    width: 180px;
+    height: 3px;
+    border-radius: 5px;
+    background-color: #303135;
+}
+
+.activity-timer-progress {
     width: calc(var(--progress) * 1%);
     height: 3px;
     border-radius: 5px;
     background-color: #1DB954;
+    /* background-color: #97979f; */
 }
 
 .activity-timer-timestamps {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; */
     width: 100%;
 }
 
@@ -366,13 +542,14 @@ img.status-dot-activity {
 .discord-activity-icon {
     /* background-color: rgba(35, 35, 35, 0.8); */
     /* border-radius: 10px; */
-    width: 100px;
+    width: 110px;
     height: auto;
     aspect-ratio: 1 / 1;
     min-height: 0;
     /* overflow: hidden; */
-    margin: 10px;
-    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 
     position: relative;
     /* Crucial: anchors the absolute child inside */
@@ -411,6 +588,76 @@ img.status-dot-activity {
     color: var(--accent-red);
     transform: scale(1.1);
 }
+
+
+/* Credits for these CSS styles to akryst */
+.bio-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 4px 0
+}
+
+.bio-tool {
+    position: relative;
+    opacity: .65
+}
+
+.bio-tool:focus-visible,
+.bio-tool:hover {
+    opacity: 1
+}
+
+.bio-tool-label {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 8px);
+    transform: translateX(-50%);
+    padding: 5px 8px;
+    background: #18232c;
+    white-space: nowrap;
+    font: 10px ui-monospace, monospace;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none
+}
+
+.bio-tool:focus-visible .bio-tool-label,
+.bio-tool:hover .bio-tool-label {
+    opacity: 1;
+    visibility: visible
+}
+
+.tools-panel .bio-tools {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px 12px
+}
+
+.tools-panel .bio-tool {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 1
+}
+
+.tools-panel .bio-tool svg {
+    flex-shrink: 0
+}
+
+.tools-panel .bio-tool-label {
+    position: static;
+    transform: none;
+    padding: 0;
+    background: none;
+    color: #b3bec5;
+    opacity: 1;
+    visibility: visible;
+    white-space: normal;
+    font-size: 10px;
+    line-height: 1.4
+}
+
 
 .bio-box {
     margin: 80px auto;
@@ -579,14 +826,4 @@ footer {
     color: #777;
     /* Added fade in for footer */
     animation: fadeIn 2s ease-in;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
 }

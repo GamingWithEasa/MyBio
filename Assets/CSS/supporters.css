@@ -18,14 +18,14 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* body p {
+main p {
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
     color: #edf3ff;
     text-shadow: 0 0 8px rgba(173, 183, 198, 0.75), 0 0 18px rgba(142, 151, 167, 0.5), 0 0 30px rgba(142, 151, 167, 0.32);
     letter-spacing: 0.04em;
-} */
+}
 
 header {
     position: relative;
@@ -51,6 +51,64 @@ header::after {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     content: "";
     animation: shimmer 3s infinite;
+}
+
+.scene {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0; /* Shortcut for top: 0; right: 0; bottom: 0; left: 0; */
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999; /* Keeps it on top of other content */
+    background-color: rgba(0, 0, 0, 1); /* Optional: semi-transparent backdrop */
+}
+
+.intro-scene {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0; /* Shortcut for top: 0; right: 0; bottom: 0; left: 0; */
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999; /* Keeps it on top of other content */
+    background-color: rgba(0, 0, 0, 1); /* Optional: semi-transparent backdrop */
+    
+}
+
+.transition-scene {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0; /* Shortcut for top: 0; right: 0; bottom: 0; left: 0; */
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999; /* Keeps it on top of other content */
+    background-color: rgba(0, 0, 0, 1); /* Optional: semi-transparent backdrop */
+    
+}
+
+.anim-fadeOut {
+    animation: fadeOut 1s ease forwards; /* Fades out the scene */
+    animation-delay: 3.5s; /* Starts fading out after 2 seconds */
+}
+
+.anim-intro {
+    animation:
+        slideDowni 1.85s ease-out forwards,
+        slideRight 1.85s ease-out 0.85s forwards,
+        reveal 0.85s ease-out 0.85s forwards;
+}
+
+.anim-transition {
+    animation:
+        slideDowni 1.85s ease-out forwards,
+        slideRight 1.85s ease-out 0.85s forwards,
+        reveal 0.85s ease-out 0.85s forwards,
+        fadeOut 5s ease forwards;
 }
 
 main {
@@ -199,8 +257,60 @@ main {
 }
 
 @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { 
+        opacity: 0; transform: translateY(-20px); 
+    }
+    
+    to { 
+        opacity: 1; transform: translateY(0); 
+    }
+}
+
+@keyframes slideDowni {
+    from { 
+        opacity: 0; transform: translateY(-20px) translateX(-175px);
+    }
+    
+    to { 
+        opacity: 1; transform: translateY(0) translateX(-175px);
+    }
+}
+
+@keyframes slideRight {
+    from { 
+        opacity: 0; transform: translateX(-175px); 
+    }
+    
+    to { 
+        opacity: 1; transform: translateX(0); 
+    }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+    }
+    
+    to { 
+        opacity: 1; 
+    }
+}
+
+@keyframes fadeOut {
+    from { 
+        opacity: 1; 
+    }
+    
+    to { 
+        opacity: 0; 
+    }
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 @keyframes shimmer {

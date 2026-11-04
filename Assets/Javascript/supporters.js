@@ -89,16 +89,19 @@ async function loadOGSupporters() {
         const data = await response.json();
         const supporters = Object.values(data)
             .filter((entry) => entry && typeof entry === "object")
-            .map((entry) => {
+            .splice(0, 5)
+            .map((entry, index) => {
                 const name = typeof entry.name === "string" ? entry.name.trim() : "";
                 const rawDate = typeof entry.date === "string" ? entry.date.trim() : "";
-                return {
-                    name,
-                    date: rawDate && rawDate !== "00/00/00" ? rawDate : "",
-                    note: typeof entry.note === "string" ? entry.note.trim() : "",
-                    // discordid: typeof entry.discordid === "string" ? entry.discordid.trim() : "",
-                    customimage: typeof entry.customimage === "string" ? entry.customimage.trim() : ""
-                };
+                // if (index < 5) {
+                    return {
+                        name,
+                        date: rawDate && rawDate !== "00/00/00" ? rawDate : "",
+                        // note: typeof entry.note === "string" ? entry.note.trim() : "",
+                        // discordid: typeof entry.discordid === "string" ? entry.discordid.trim() : "",
+                        customimage: typeof entry.customimage === "string" ? entry.customimage.trim() : ""
+                    };
+                // }
             })
             .filter((supporter) => supporter.name && supporter.name.toLowerCase() !== "name");
 
@@ -107,7 +110,7 @@ async function loadOGSupporters() {
             return;
         }
 
-        // container.replaceChildren(...supporters.map(makeCard));
+        container.replaceChildren(...supporters.map(makeCard));
     } catch (error) {
         console.error("Couldn't load supporters:", error);
         showMessage("Original Supporters couldn't be loaded. Please try again later.");
@@ -126,7 +129,8 @@ async function loadSupporters() {
         const data = await response.json();
         const supporters = Object.values(data)
             .filter((entry) => entry && typeof entry === "object")
-            .map((entry) => {
+            .slice(5)
+            .map((entry, index) => {
                 const name = typeof entry.name === "string" ? entry.name.trim() : "";
                 const rawDate = typeof entry.date === "string" ? entry.date.trim() : "";
                 return {
@@ -150,6 +154,7 @@ async function loadSupporters() {
         showMessage("Supporters couldn't be loaded. Please try again later.");
     }
 }
+
 
 loadOGSupporters();
 loadSupporters();

@@ -8,12 +8,25 @@
     <link rel="stylesheet" href="../CSS/supporters.css" />
 </head>
 <body>
-    <header>Supporters</header>
+    <!-- <header>Supporters</header> -->
+    <section class="scene anim-fadeOut">
+        <h1 id="transitionText1" class="anim-intro" style="
+            margin-left: 180px;
+            position: fixed;
+            opacity: 0;
+            visibility: hidden;
+            
+            ">Welcome</h1>
+        <header id="transitionText2" style="
+            margin-right: 21%;
+            ">YOLO</header>
+    </section>
+
     <div class="site-navigation" style="display: flex; justify-content: center; align-items: center;">
-        <a class="nav-link glass-container" href="/index.html">Home</a>
-        <a class="nav-link glass-container" href="">Activities</a>
-        <a class="nav-link glass-container" href="Assets/Pages/.html">SOTW</a>
-        <a class="nav-link glass-container" href="Assets/Pages/.html">QOTW</a>
+        <a class="nav-link glass-container" href="/index.html" onclick="navigateAfterTransition(event)">Home</a>
+        <a class="nav-link glass-container" href="" onclick="navigateAfterTransition(event)">Activities</a>
+        <a class="nav-link glass-container" href="" onclick="navigateAfterTransition(event)">SOTW</a>
+        <a class="nav-link glass-container" href="" onclick="navigateAfterTransition(event)">QOTW</a>
     </div>
 
     <!-- <p class="intro">A meir thank-you to everyone who supports me.</p> -->
@@ -45,6 +58,8 @@
     </main>
 
     <!-- use for pfp: https://discordpfp.gg/ -->
-    <script src="../JavaScript/supporters.js"></script>
+    <script src="../Javascript/pages.js"></script>
+
+    <script src="../Javascript/supporters.js"></script>
 </body>
 </html>
